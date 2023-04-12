@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: "Roboto", sans-serif;
+      color: #1C1D1F;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      height: 100vh;
+      width: 100vw;
+      background-color: #F7F5F2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-section {
+      background-color: #FFFFFF;
+      width: 75%;
+      height: 90%;
+      padding: 2.5%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    } 
+
+    .main-section h1 {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    .main-section h3 {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .rating-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .star-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .star {
+      width: 5.5rem;
+      height: 5.5rem;
+      cursor: pointer;
+    }
+
+    .star-selected path {
+      fill: #E59819;
+    }
+
+    form {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form label {
+      font-size: 1.25rem;
+    }
+
+    form input {
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+      outline: none;
+      border: #8a8a8a 1px solid;
+    }
+
+    .review-form {
+      width: 80%;
+      height: 25%;
+      font-size: 1rem;
+      padding: 1rem;
+      border: 1px solid #8a8a8a;
+      border-radius: 0.25rem;
+      outline: none;
+    }
+
+    
+    .submit-button {
+      width: 50%;
+      padding: 1.5rem;
+      font-size: 1.25rem;
+      border-radius: 0.25rem;
+      border: none;
+      background-color: #1C1D1F;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .submitted-section {
+      width: 75%;
+      height: 90%;
+      
+      background-color: #FFFFFF;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .submitted-section svg {
+      width: 5.5rem;
+      height: 5.5rem;
+      display: none;
+    }
+
+    .submitted-section h1 {
+      display: none;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="main-section">
+      <h1>How would you rate your experience with the course so far?</h1>
+
+      <div class="rating-col">
+        <h3>Select Rating</h3>
+        <div class="star-row">
+          <svg viewBox="0 0 1024 1024" id="1" class="star" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#E59819" stroke="#E59819" stroke-width="46.08" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M541.44 103.68l126.72 256 282.88 42.24-204.8 198.4L794.88 883.2 541.44 750.08 288 883.2l48.64-282.88-204.8-198.4 282.88-42.24z" fill="#FFFFFF"></path><path d="M794.88 896c-2.56 0-3.84 0-6.4-1.28L541.44 764.16 294.4 894.72c-3.84 2.56-8.96 1.28-14.08-1.28-3.84-2.56-6.4-7.68-5.12-12.8l47.36-275.2L122.88 410.88c-3.84-3.84-5.12-8.96-3.84-12.8s5.12-7.68 10.24-8.96l276.48-39.68 124.16-250.88c3.84-8.96 19.2-8.96 23.04 0l124.16 250.88 276.48 39.68c5.12 1.28 8.96 3.84 10.24 8.96 1.28 5.12 0 10.24-3.84 12.8L760.32 605.44l47.36 275.2c1.28 5.12-1.28 10.24-5.12 12.8-2.56 1.28-5.12 2.56-7.68 2.56zM541.44 737.28c2.56 0 3.84 0 6.4 1.28l230.4 121.6-43.52-256c-1.28-3.84 1.28-8.96 3.84-11.52l185.6-181.76-257.28-37.12c-3.84 0-7.68-3.84-10.24-6.4l-115.2-232.96-115.2 232.96c-1.28 3.84-5.12 6.4-10.24 6.4l-257.28 37.12L345.6 591.36c2.56 2.56 3.84 7.68 3.84 11.52l-43.52 256 230.4-121.6h5.12z" fill="#FFFFFF231C1C"></path></g></svg>
+          <svg viewBox="0 0 1024 1024" id="2" class="star" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#E59819" stroke="#E59819" stroke-width="46.08" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M541.44 103.68l126.72 256 282.88 42.24-204.8 198.4L794.88 883.2 541.44 750.08 288 883.2l48.64-282.88-204.8-198.4 282.88-42.24z" fill="#FFFFFF"></path><path d="M794.88 896c-2.56 0-3.84 0-6.4-1.28L541.44 764.16 294.4 894.72c-3.84 2.56-8.96 1.28-14.08-1.28-3.84-2.56-6.4-7.68-5.12-12.8l47.36-275.2L122.88 410.88c-3.84-3.84-5.12-8.96-3.84-12.8s5.12-7.68 10.24-8.96l276.48-39.68 124.16-250.88c3.84-8.96 19.2-8.96 23.04 0l124.16 250.88 276.48 39.68c5.12 1.28 8.96 3.84 10.24 8.96 1.28 5.12 0 10.24-3.84 12.8L760.32 605.44l47.36 275.2c1.28 5.12-1.28 10.24-5.12 12.8-2.56 1.28-5.12 2.56-7.68 2.56zM541.44 737.28c2.56 0 3.84 0 6.4 1.28l230.4 121.6-43.52-256c-1.28-3.84 1.28-8.96 3.84-11.52l185.6-181.76-257.28-37.12c-3.84 0-7.68-3.84-10.24-6.4l-115.2-232.96-115.2 232.96c-1.28 3.84-5.12 6.4-10.24 6.4l-257.28 37.12L345.6 591.36c2.56 2.56 3.84 7.68 3.84 11.52l-43.52 256 230.4-121.6h5.12z" fill="#FFFFFF231C1C"></path></g></svg>
+          <svg viewBox="0 0 1024 1024" id="3" class="star" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#E59819" stroke="#E59819" stroke-width="46.08" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M541.44 103.68l126.72 256 282.88 42.24-204.8 198.4L794.88 883.2 541.44 750.08 288 883.2l48.64-282.88-204.8-198.4 282.88-42.24z" fill="#FFFFFF"></path><path d="M794.88 896c-2.56 0-3.84 0-6.4-1.28L541.44 764.16 294.4 894.72c-3.84 2.56-8.96 1.28-14.08-1.28-3.84-2.56-6.4-7.68-5.12-12.8l47.36-275.2L122.88 410.88c-3.84-3.84-5.12-8.96-3.84-12.8s5.12-7.68 10.24-8.96l276.48-39.68 124.16-250.88c3.84-8.96 19.2-8.96 23.04 0l124.16 250.88 276.48 39.68c5.12 1.28 8.96 3.84 10.24 8.96 1.28 5.12 0 10.24-3.84 12.8L760.32 605.44l47.36 275.2c1.28 5.12-1.28 10.24-5.12 12.8-2.56 1.28-5.12 2.56-7.68 2.56zM541.44 737.28c2.56 0 3.84 0 6.4 1.28l230.4 121.6-43.52-256c-1.28-3.84 1.28-8.96 3.84-11.52l185.6-181.76-257.28-37.12c-3.84 0-7.68-3.84-10.24-6.4l-115.2-232.96-115.2 232.96c-1.28 3.84-5.12 6.4-10.24 6.4l-257.28 37.12L345.6 591.36c2.56 2.56 3.84 7.68 3.84 11.52l-43.52 256 230.4-121.6h5.12z" fill="#FFFFFF231C1C"></path></g></svg>
+          <svg viewBox="0 0 1024 1024" id="4" class="star" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#E59819" stroke="#E59819" stroke-width="46.08" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M541.44 103.68l126.72 256 282.88 42.24-204.8 198.4L794.88 883.2 541.44 750.08 288 883.2l48.64-282.88-204.8-198.4 282.88-42.24z" fill="#FFFFFF"></path><path d="M794.88 896c-2.56 0-3.84 0-6.4-1.28L541.44 764.16 294.4 894.72c-3.84 2.56-8.96 1.28-14.08-1.28-3.84-2.56-6.4-7.68-5.12-12.8l47.36-275.2L122.88 410.88c-3.84-3.84-5.12-8.96-3.84-12.8s5.12-7.68 10.24-8.96l276.48-39.68 124.16-250.88c3.84-8.96 19.2-8.96 23.04 0l124.16 250.88 276.48 39.68c5.12 1.28 8.96 3.84 10.24 8.96 1.28 5.12 0 10.24-3.84 12.8L760.32 605.44l47.36 275.2c1.28 5.12-1.28 10.24-5.12 12.8-2.56 1.28-5.12 2.56-7.68 2.56zM541.44 737.28c2.56 0 3.84 0 6.4 1.28l230.4 121.6-43.52-256c-1.28-3.84 1.28-8.96 3.84-11.52l185.6-181.76-257.28-37.12c-3.84 0-7.68-3.84-10.24-6.4l-115.2-232.96-115.2 232.96c-1.28 3.84-5.12 6.4-10.24 6.4l-257.28 37.12L345.6 591.36c2.56 2.56 3.84 7.68 3.84 11.52l-43.52 256 230.4-121.6h5.12z" fill="#FFFFFF231C1C"></path></g></svg>
+          <svg viewBox="0 0 1024 1024" id="5" class="star" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#E59819" stroke="#E59819" stroke-width="46.08" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M541.44 103.68l126.72 256 282.88 42.24-204.8 198.4L794.88 883.2 541.44 750.08 288 883.2l48.64-282.88-204.8-198.4 282.88-42.24z" fill="#FFFFFF"></path><path d="M794.88 896c-2.56 0-3.84 0-6.4-1.28L541.44 764.16 294.4 894.72c-3.84 2.56-8.96 1.28-14.08-1.28-3.84-2.56-6.4-7.68-5.12-12.8l47.36-275.2L122.88 410.88c-3.84-3.84-5.12-8.96-3.84-12.8s5.12-7.68 10.24-8.96l276.48-39.68 124.16-250.88c3.84-8.96 19.2-8.96 23.04 0l124.16 250.88 276.48 39.68c5.12 1.28 8.96 3.84 10.24 8.96 1.28 5.12 0 10.24-3.84 12.8L760.32 605.44l47.36 275.2c1.28 5.12-1.28 10.24-5.12 12.8-2.56 1.28-5.12 2.56-7.68 2.56zM541.44 737.28c2.56 0 3.84 0 6.4 1.28l230.4 121.6-43.52-256c-1.28-3.84 1.28-8.96 3.84-11.52l185.6-181.76-257.28-37.12c-3.84 0-7.68-3.84-10.24-6.4l-115.2-232.96-115.2 232.96c-1.28 3.84-5.12 6.4-10.24 6.4l-257.28 37.12L345.6 591.36c2.56 2.56 3.84 7.68 3.84 11.52l-43.52 256 230.4-121.6h5.12z" fill="#FFFFFF231C1C"></path></g></svg>
+        </div>
+      </div>
+
+      <form class="hidden">
+        <label for="name">Name</label>
+        <input type="text">
+      </form>
+      
+      <textarea placeholder="Tell us what you think..." name="review-form" class="review-form hidden" cols="30" rows="10"></textarea>
+      <button class="submit-button hidden">Submit</button>
+    </section>
+    <section class="submitted-section">
+      <svg fill="#1C1D1F" viewBox="0 0 16 16" id="check-circle-16px" xmlns="http://www.w3.org/2000/svg" stroke="#1C1D1F" stroke-width="0.00016"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="Path_146" data-name="Path 146" d="M28,0a8,8,0,1,0,8,8A8.009,8.009,0,0,0,28,0Zm0,15a7,7,0,1,1,7-7A7.008,7.008,0,0,1,28,15Zm4.854-9.146-6,6a.5.5,0,0,1-.708,0l-3-3a.5.5,0,0,1,.708-.708L26.5,10.793l5.646-5.647a.5.5,0,0,1,.708.708Z" transform="translate(-20)"></path> </g></svg>
+      <h1>Thank you for your feedback!</h1>
+    </section>
+  </div>
+
+
+  <script>
+    function selectStar(id) {
+        $(`.star:lt(${id})`).addClass("star-selected");
+        $(`.star:gt(${id - 1})`).removeClass("star-selected");
+    }
+    
+    $(document).ready(() => {
+      let rating;
+      let selected = false;
+      
+      $(".star").hover(function() {
+        const id = $(this).attr("id");
+
+        if (!selected) selectStar(id);
+
+        $(this).click(function() {
+            // if the user rethinks their decision
+            if (selected) selectStar(id);
+
+            selected = true;
+            rating = id;
+         
+            $(".review-form, .submit-button, form").removeClass("hidden")
+            $("form input").focus();
+          });
+
+      });
+
+      $(".submit-button").click(function() {
+        const name = $("input").val();
+        const review = $(".review-form").val();
+        
+        // email subject and body
+        const subject = `New Review from ${name}`;
+        const body = `Rating: ${rating}/5\nReview: ${review}`;
+
+        $(".main-section").hide();
+        $(".submitted-section").css("display", "flex");
+        $(".submitted-section h1, svg").fadeIn();
+
+        if (name != "") {
+
+          // YOUR FORMSPREE FORM LINK GOES HERE
+          fetch("https://formspree.io/f/example", {
+            method: "POST",
+            body: JSON.stringify({subject: subject, body: body}),
+            headers: {
+              "Content-Type": "application/json"
+            },
+            mode: "cors"
+          }).then((response) => console.log(response)) 
+        } 
+
+      });
+    });
+  </script>
+</body>
+</html>
