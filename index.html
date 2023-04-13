@@ -76,6 +76,8 @@
       width: 80%;
       display: flex;
       flex-direction: column;
+      opacity: 0;
+      transition: opacity 1s;
     }
 
     form label {
@@ -98,6 +100,9 @@
       border: 1px solid #8a8a8a;
       border-radius: 0.25rem;
       outline: none;
+
+      opacity: 0;
+      transition: opacity 1s;
     }
 
     
@@ -110,6 +115,9 @@
       background-color: #1C1D1F;
       color: #FFFFFF;
       cursor: pointer;
+
+      opacity: 0;
+      transition: opacity 0.5s;
     }
 
     .hidden {
@@ -194,7 +202,7 @@
             selected = true;
             rating = id;
          
-            $(".review-form, .submit-button, form").removeClass("hidden")
+            $(".review-form, .submit-button, form").removeClass("hidden").css("opacity", "1");
             $("form input").focus();
           });
 
