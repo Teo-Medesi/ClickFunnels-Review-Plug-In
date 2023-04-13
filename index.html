@@ -1,3 +1,18 @@
+<!---
+  The form data get's sent via a third party platform called Formspree (https://formspree.io)
+  IN ORDER FOR THE EMAIL TO WORK, YOU NEED TO CREATE A FORMSPREE ACCOUNT
+
+  once you create an account and you will be presented with a dashboard where you can make a new form and designate the email address to which you want
+  to receive the review
+    after making a new form you will be presented with your form's endpoint ------ e.g https://formspree.io/f/example
+    copy this URL and paste it in the code below (I have marked where it should be placed at line 313 --- "fetch("LINK GOES HERE")")
+
+    after that, any time a user submits a review, it will get sent via formspree to your designated email in the format:
+    Subject: "New message from {user's name}"
+    Body: Rating: {rating}/5
+          Review: {review} 
+--->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -296,6 +311,10 @@
         if (name != "") {
 
           // YOUR FORMSPREE FORM LINK GOES HERE
+          //                 |
+          //                 |
+          //                 |
+          //                 V
           fetch("https://formspree.io/f/example", {
             method: "POST",
             body: JSON.stringify({subject: subject, body: body}),
@@ -303,9 +322,8 @@
               "Content-Type": "application/json"
             },
             mode: "cors"
-          }).then((response) => console.log(response)) 
+          }) 
         } 
-
       });
     });
   </script>
